@@ -42,7 +42,7 @@
  * - `void DMA_Clock_Enable(DMA_Config *config)`: Enables the clock for the specified DMA controller.
  * - `void DMA_Clock_Disable(DMA_Config *config)`: Disables the clock for the specified DMA controller.
  * - `void DMA_Reset(DMA_Config *config)`: Resets the specified DMA controller.
- * - `void DMA_Reset_Flags(DMA_Flags_Typedef flag)`: Resets all DMA flags.
+ * - `void DMA_Reset_Flags(volatile DMA_Flags_Typedef *flag)`: Resets all DMA flags.
  * - `int8_t DMA_Init(DMA_Config *config)`: Initializes the DMA with the specified configuration.
  * - `void DMA_Set_Target(DMA_Config *config)`: Configures the target memory and peripheral for DMA transfers.
  * - `void DMA_Set_Trigger(DMA_Config *config)`: Sets up and enables the DMA stream for data transfer.
@@ -183,9 +183,9 @@ void DMA_Reset(DMA_Config *config);
 /**
  * @brief Resets all DMA flags in the provided DMA_Flags_Typedef structure.
  *
- * @param flag The DMA_Flags_Typedef structure whose flags are to be reset.
+ * @param flag Pointer to the DMA_Flags_Typedef structure whose flags are to be reset.
  */
-void DMA_Reset_Flags(DMA_Flags_Typedef flag);
+void DMA_Reset_Flags(volatile DMA_Flags_Typedef *flag);
 
 /**
  * @brief Initializes the DMA with the specified configuration.

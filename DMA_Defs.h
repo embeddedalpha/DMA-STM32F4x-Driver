@@ -27,11 +27,11 @@
  */
 typedef struct DMA_Flags_Typedef
 {
-    bool Transfer_Complete_Flag;       /**< Indicates if the transfer is complete */
-    bool Half_Transfer_Complete_Flag;  /**< Indicates if half of the transfer is complete */
-    bool Transfer_Error_Flag;          /**< Indicates if there was a transfer error */
-    bool Direct_Mode_Error_Flag;       /**< Indicates if there was a direct mode error */
-    bool Fifo_Error_Flag;              /**< Indicates if there was a FIFO error */
+    volatile bool Transfer_Complete_Flag;       /**< Indicates if the transfer is complete */
+    volatile bool Half_Transfer_Complete_Flag;  /**< Indicates if half of the transfer is complete */
+    volatile bool Transfer_Error_Flag;          /**< Indicates if there was a transfer error */
+    volatile bool Direct_Mode_Error_Flag;       /**< Indicates if there was a direct mode error */
+    volatile bool Fifo_Error_Flag;              /**< Indicates if there was a FIFO error */
 
 }DMA_Flags_Typedef;
 
@@ -610,17 +610,15 @@ static const struct DMA_Configuration {
 						.channel = 1,
 				},
 
-				._DAC2 = {
+				._DAC1 = {
 						.Controller = DMA1,
 						.Stream = DMA1_Stream5,
 						.channel = 7,
 				},
 
-				._DAC2 = {
-						.Controller = DMA1,
-						.Stream = DMA1_Stream6,
-						.channel = 7,
-				},
+                ._DAC2 = { .Controller = DMA1, .Stream = DMA1_Stream6, .channel = 7 },
+
+
 
 				.SDIO_RXTX = {
 						.Controller = DMA2,
@@ -652,11 +650,7 @@ static const struct DMA_Configuration {
 						.channel = 2,
 				},
 
-				.TIM1_UP = {
-						.Controller = DMA2,
-						.Stream = DMA2_Stream5,
-						.channel = 6,
-				},
+
 
 				.TIM1_CH1 = {
 						.Controller = DMA2,
@@ -736,11 +730,7 @@ static const struct DMA_Configuration {
 						.channel = 7,
 				},
 
-				.TIM2_UP = {
-						.Controller = DMA1,
-						.Stream = DMA1_Stream6,
-						.channel = 3,
-				},
+
 
 				.TIM2_CH1 = {
 						.Controller = DMA1,
@@ -766,29 +756,13 @@ static const struct DMA_Configuration {
 						.channel = 3,
 				},
 
-				.TIM3_CH1 = {
-						.Controller = DMA1,
-						.Stream = DMA1_Stream4,
-						.channel = 5,
-				},
 
-				.TIM3_CH2 = {
-						.Controller = DMA1,
-						.Stream = DMA1_Stream5,
-						.channel = 5,
-				},
 
-				.TIM3_CH3 = {
-						.Controller = DMA1,
-						.Stream = DMA1_Stream6,
-						.channel = 5,
-				},
 
-				.TIM3_CH4 = {
-						.Controller = DMA1,
-						.Stream = DMA1_Stream2,
-						.channel = 5,
-				},
+
+
+
+
 
 				.TIM3_UP = {
 						.Controller = DMA1,
@@ -802,47 +776,19 @@ static const struct DMA_Configuration {
 						.channel = 5,
 				},
 
-				.TIM4_CH1 = {
-						.Controller = DMA1,
-						.Stream = DMA1_Stream0,
-						.channel = 2,
-				},
 
-				.TIM4_CH2 = {
-						.Controller = DMA1,
-						.Stream = DMA1_Stream3,
-						.channel = 2,
-				},
 
-				.TIM4_CH3 = {
-						.Controller = DMA1,
-						.Stream = DMA1_Stream7,
-						.channel = 2,
-				},
 
-				.TIM4_UP = {
-						.Controller = DMA1,
-						.Stream = DMA1_Stream6,
-						.channel = 2,
-				},
 
-				.TIM5_CH1 = {
-						.Controller = DMA1,
-						.Stream = DMA1_Stream2,
-						.channel = 6,
-				},
 
-				.TIM5_CH2 = {
-						.Controller = DMA1,
-						.Stream = DMA1_Stream4,
-						.channel = 6,
-				},
 
-				.TIM5_CH3 = {
-						.Controller = DMA1,
-						.Stream = DMA1_Stream0,
-						.channel = 6,
-				},
+
+
+
+
+
+
+
 
 				.TIM5_CH4 = {
 						.Controller = DMA1,
@@ -850,11 +796,7 @@ static const struct DMA_Configuration {
 						.channel = 6,
 				},
 
-				.TIM5_UP = {
-						.Controller = DMA1,
-						.Stream = DMA1_Stream6,
-						.channel = 6,
-				},
+
 
 				.TIM5_TRIG = {
 						.Controller = DMA1,
